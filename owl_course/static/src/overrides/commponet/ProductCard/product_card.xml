@@ -1,0 +1,27 @@
+<templates xml:space="preserve">
+
+    <t t-name="owl_course.ProductCard">
+        <div class="product-card card h-100">
+            <img
+                    class="product-card__image card-img-top"
+                    t-att-src="props.product.image"
+                    t-att-alt="props.product.name"
+            />
+
+            <div class="card-body">
+                <h4 class="product-card__title" t-esc="props.product.name"/>
+
+                <p class="product-card__price">
+                    Price:
+                    <span t-esc="props.product.price"/>
+                </p>
+
+                <button class="btn btn-primary" t-on-click="props.onMoreInfo">
+                    More Info
+                </button>
+
+            </div>
+        </div>
+    </t>
+
+</templates>

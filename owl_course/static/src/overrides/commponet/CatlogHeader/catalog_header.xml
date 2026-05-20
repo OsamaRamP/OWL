@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="owl_course.CatalogHeader">
+    <div class="catalog-header mb-4">
+        <img
+            class="catalog-header__image"
+            src="/owl_course/static/img/header.jpeg"
+            alt="Product Catalog Cover"
+        />
+
+        <div class="catalog-header__overlay">
+            <h1 class="catalog-header__title">Product Catalog</h1>
+            <p class="catalog-header__description">
+                Browse available products, review prices, and add items to your cart using a simple OWL frontend application inside Odoo.
+            </p>
+        </div>
+    </div>
+</t></templates>

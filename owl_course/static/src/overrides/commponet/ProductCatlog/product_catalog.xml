@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="owl_course.ProductCatalog">
+        <div class="product-catalog-page p-4">
+
+            <CatalogHeader/>
+
+            <div class="catalog-toolbar d-flex align-items-center justify-content-between mb-4">
+                <div class="catalog-search">
+                    <input
+                        t-ref="searchInput"
+                        class="form-control"
+                        placeholder="Search products..."
+                        t-att-value="state.search"
+                        t-on-input="onSearchInput"
+                    />
+
+                    <button class="btn btn-outline-secondary mt-2" t-on-click="clearSearch">
+                        Clear Search
+                    </button>
+                </div>
+
+                <t t-if="state.cartCount > 0">
+                    <div class="cart-counter badge bg-primary p-3">
+                        Cart Items:
+                        <strong t-esc="state.cartCount"/>
+                    </div>
+                </t>
+            </div>
+
+            <t t-if="state.products.length === 0">
+                <p class="text-muted">No products found.</p>
+            </t>
+
+            <div class="product-grid">
+                <t t-foreach="state.products" t-as="product" t-key="product.id">
+                    <ProductCard product="product" onAddToCart.bind="addToCart"/>
+                </t>
+            </div>
+
+        </div>
+    </t>
+
+</templates>

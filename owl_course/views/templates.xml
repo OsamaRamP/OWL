@@ -1,0 +1,20 @@
+<odoo>
+    <data>
+
+    <record id="action_product_catalog" model="ir.actions.client">
+        <field name="name">Product Catalog</field>
+        <field name="tag">owl_course.action</field>
+    </record>
+
+    <menuitem id="menu_product_catalog_root"
+              name="Product Catalog"
+              sequence="10"/>
+
+    <menuitem id="menu_product_catalog"
+              name="Catalog"
+              parent="menu_product_catalog_root"
+              action="action_product_catalog"
+              sequence="10"/>
+
+    </data>
+</odoo>
