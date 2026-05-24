@@ -4,10 +4,9 @@
         <div class="product-card card h-100">
             <img
                     class="product-card__image card-img-top"
-                    t-att-src="props.product.image"
+                    t-att-src="'/web/image/product.template/'+props.product.id +'/image_1920'"
                     t-att-alt="props.product.name"
             />
-
             <div class="card-body">
                 <h4 class="product-card__title" t-esc="props.product.name"/>
 

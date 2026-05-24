@@ -16,7 +16,7 @@
                         t-on-input="onSearchInput"
                     />
 
-                    <button class="btn btn-outline-secondary mt-2" t-on-click="clearSearch">
+                    <button class="btn btn-outline-secondary mt-2" t-on-click="clearSearch" t-ref="clearSearchB">
                         Clear Search
                     </button>
                 </div>
@@ -29,13 +29,13 @@
                 </t>
             </div>
 
-            <t t-if="state.products.length === 0">
+            <t t-if="allFilterProduct.length === 0">
                 <p class="text-muted">No products found.</p>
             </t>
 
             <div class="product-grid">
-                <t t-foreach="state.products" t-as="product" t-key="product.id">
-                    <ProductCard product="product" onAddToCart.bind="addToCart"/>
+                <t t-foreach="allFilterProduct" t-as="productval" t-key="product.id">
+                    <ProductCard product="productval" onMoreInfo.bind="onMoreInfo"/>
                 </t>
             </div>
 
