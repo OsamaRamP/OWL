@@ -15,7 +15,7 @@
                     <span t-esc="props.product.price"/>
                 </p>
 
-                <button class="btn btn-primary" t-on-click="props.onMoreInfo">
+                <button class="btn btn-primary"  t-on-click="() => props.onMoreInfo(props.product)">
                     More Info
                 </button>
 

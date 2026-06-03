@@ -34,7 +34,7 @@
             </t>
 
             <div class="product-grid">
-                <t t-foreach="allFilterProduct" t-as="productval" t-key="product.id">
+                <t t-foreach="allFilterProduct" t-as="productval" t-key="productval.id">
                     <ProductCard product="productval" onMoreInfo.bind="onMoreInfo"/>
                 </t>
             </div>

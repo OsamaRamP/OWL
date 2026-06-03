@@ -6,6 +6,12 @@ import { ProductCard } from "../ProductCard/product_card";
 import { CatalogHeader } from "../CatlogHeader/catalog_header";
 import { useService } from "@web/core/utils/hooks";
 
+import { _t } from "@web/core/l10n/translation";
+
+
+import { ConfirmationDialog } from "@web/core/confirmation_dialog/confirmation_dialog";
+
+
 export class ProductCatalog extends Component {
     static template = "owl_course.ProductCatalog";
     static components = { ProductCard , CatalogHeader};
@@ -13,6 +19,9 @@ export class ProductCatalog extends Component {
     setup() {
         this.searchInputRef = useRef("searchInput");
         this.orm = useService("orm");
+        this.action = useService("action");
+        this.dialog = useService("dialog");
+
         this.notification = useService("notification");
         this.clearSearchB = useRef("clearSearchB");
         this.state = useState({
@@ -43,8 +52,11 @@ export class ProductCatalog extends Component {
         );
 
         useEffect( ()=>{
-                        console.log("this << useEffect >> method");
-        },() =>[this.state.cartCount]
+                        console.log("this << useEffect >> method" , this.state.search);
+                        if(this.state.search && ! this.state.products){
+
+                        }
+        },() =>[this.state.search]
 
         );
         onWillUnmount(()=>{
@@ -83,12 +95,48 @@ export class ProductCatalog extends Component {
 
 
 
-    onMoreInfo() {
-        this.notification.add(
-         ("this product called."),
-                { type: "info" }
-        )
-        this.state.cartCount++;
+    onMoreInfo(product) {
+
+//     this.dialog.add(ConfirmationDialog, {
+//            title: _t("Product call On more Info    !"),
+//            body: _t(
+//               product.name
+//            ),
+//            cancel() {},
+//            confirm: async () => {
+//        this.notification.add(
+//         ("this product called."),
+//                { type: "info" }
+//        )
+//
+//            },
+//            confirmLabel: _t("Yes, I know what I'm doing"),
+//            cancelLabel: _t("Missclicked, sorry"),
+//        });
+
+//        this.notification.add(
+//         ("this product called."),
+//                { type: "info" }
+//        )
+//        this.state.cartCount++;
+        console.log("zzzz" , product)
+        this.action.doAction({
+            type: "ir.actions.act_window",
+            res_model: "product.template",
+            views: [[false, "form"]],
+            target: "current",
+            res_id :product.id
+        });
+
+
+//        this.action.doActionButton({
+//            name: "default_intrastat_units",
+//            type: "object",
+//            resModel: "product.template",
+//        });
+
+      this.orm.call('product.template', 'default_intrastat_units',[[]])
+
     }
 }
 

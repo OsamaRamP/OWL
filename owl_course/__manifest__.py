@@ -15,6 +15,7 @@ Long description of module's purpose
     # for the full list
     'category': 'Uncategorized',
     'version': '19.0.1',
+    'depends': ['product'],
 
     # any module necessary for this one to work correctly
     "assets": {
